@@ -6,7 +6,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import bs1 from "../assets/Boston_Spread_screenshot.png";
 import bs2 from "../assets/Boston_Spread_screenshot_2.png";
 import bs3 from "../assets/Boston_Spread_screenshot_3.png";
+import ospi1 from "../assets/ospi-screenshot-1.png";
+import ospi2 from "../assets/ospi-screenshot-2.png";
+import ospi3 from "../assets/ospi-screenshot-3.png";
 import { AiFillGithub, AiOutlineLink } from "react-icons/ai";
+
 const Container = styled.div`
   ${tw`
 flex flex-col
@@ -156,21 +160,24 @@ const Projects = () => {
       <SectionText>
         This app uses the T3 stack that has recently been popularized
         (Typescript, tRPC, Prisma, Next). OSPI is a Stack Overflow inspired
-        forum and educational platform dedicated to West African poultry
-        farmers. Poultry Farmers in under resourced areas, rely heavily on
-        social media to exchange knowledge. Questions repeat themselves on a
-        daily and weekly basis in the poultry facebook groups.
+        forum dedicated to West African poultry farmers. OSPI has aspirations to
+        grow into an educational platform, implementing a simple Learning
+        Management System (LMS). Poultry Farmers in under resourced areas, rely
+        heavily on social media (i.e. poultry facebook groups) to exchange
+        knowledge. Questions repeat themselves on a daily and weekly basis, are
+        rarely moderated, and are often left unresolved. Knowledge Capture is
+        ellusive on these platforms.
       </SectionText>
       <CaroselContainer>
         <Carousel dynamicHeight={false}>
           <Item>
-            <img src={bs1} alt="a person cooking" />
+            <img src={ospi1} alt="screenshot 1" />
           </Item>
           <Item>
-            <img src={bs2} alt="a person cooking" />
+            <img src={ospi2} alt="screenshot 1" />
           </Item>
           <Item>
-            <img src={bs3} alt="a person cooking" />
+            <img src={ospi3} alt="screenshot 1" />
           </Item>
         </Carousel>
       </CaroselContainer>

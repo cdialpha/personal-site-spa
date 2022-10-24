@@ -44,7 +44,6 @@ function App() {
           <DevJourney />
           <Skills />
           <Projects />
-          <Connect />
         </>
       ) : (
         <ScrollWrapper>
@@ -54,7 +53,6 @@ function App() {
           <DevJourney />
           <Skills />
           <Projects />
-          <Connect />
         </ScrollWrapper>
       )}
     </Container>

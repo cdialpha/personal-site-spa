@@ -32,9 +32,12 @@ const Wedding = styled.img`
 
 const HitBoxCalvin = styled.div`
   ${tw`
-    width[150px]
-    height[500px]
-    z-50
+    width[100px]
+    height[300px]  
+    mt-5
+    lg:width[150px]
+    lg:height[500px]
+    z-50  
     // border-2
     // border-gray-200
 `}
@@ -42,8 +45,12 @@ const HitBoxCalvin = styled.div`
 
 const HitBoxMaliza = styled.div`
   ${tw`
-    width[150px]
-    height[400px]
+    width[100px]
+    height[250px]
+    mt-10
+    lg:width[150px]
+    lg:height[400px]
+    lg:mt-20
     z-50
     // border-2
     // border-gray-200

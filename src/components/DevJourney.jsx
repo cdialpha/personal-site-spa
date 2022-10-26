@@ -112,6 +112,12 @@ const DevJourney = () => {
         Herrington. Zach Gollwitzer. MonsterLessons. Hussein Nasser.
         BeABetterDev. .... & many more.
       </SectionText>
+      <SubTitle className="text-4xl">Why I'm ready </SubTitle>
+      <SectionText className="mt-5">
+        After finally feeling as though I have a good grasp on Next.JS and
+        Typescript, I feel ready to start the job hunt. Please connect with me
+        if you think I would be a valuable addition to your team!
+      </SectionText>
     </Container>
   );
 };

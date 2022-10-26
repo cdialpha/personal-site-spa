@@ -1,0 +1,38 @@
+quick setup ec2 instance on aws
+    create new role (personal-site)
+    download pem, move to ssh folder
+
+ssh into ec2 instance 
+
+install nginx 
+        sudo amazon-linux-extras list | grep nginx
+        sudo amazon-linux-extras enable nginx1D
+        sudo yum clean metadata
+        sudo yum -y install nginx
+
+which nginx -> get the path to binary
+nginx -t -c /etc/nginx/nginx.conf -> test nginx config
+nginx -c /etc/nginx/nginx.conf -> start nginx with given config
+netstat -pltn | grep nginx -> see on which ports nginx is listening 
+
+try and start nginx 
+    sudo systemctl start nginx.service
+
+or check status: 
+    sudo systemctl status nginx
+    
+if get error: 
+    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+
+then see what's on that port:
+    sudo netstat -tulpn
+    nginx may already be running. 
+
+had to end process 
+    sudo fuser -k 80/tcp
+
+this finally worked 
+     sudo systemctl restart nginx
+
+if you want to
+    curl localhost 

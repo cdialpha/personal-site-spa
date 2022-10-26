@@ -149,9 +149,7 @@ const Projects = () => {
       <SubTitle>
         <div className="flex">
           <h3> Open Source Poultry Initiative (OSPI) </h3>
-          <a href="www.bostonspread.com">
-            <AiOutlineLink className="ml-5" />
-          </a>
+
           <a href="https://github.com/cdialpha/ospi">
             <AiFillGithub className="ml-5 mb-5" />
           </a>

@@ -1,38 +1,85 @@
-quick setup ec2 instance on aws
+(1) quick setup ec2 instance on aws
     create new role (personal-site)
     download pem, move to ssh folder
+    chmod 400 personal-site-admin.pem
+    make sure http https and ssh into instance
 
-ssh into ec2 instance 
+(2) ssh into ec2 instance 
+    ssh -i "personal-site-admin.pem" ec2-user@ec2-54-205-206-128.compute-1.amazonaws.com
 
-install nginx 
+(3) install nginx 
         sudo amazon-linux-extras list | grep nginx
         sudo amazon-linux-extras enable nginx1D
         sudo yum clean metadata
         sudo yum -y install nginx
 
-which nginx -> get the path to binary
-nginx -t -c /etc/nginx/nginx.conf -> test nginx config
-nginx -c /etc/nginx/nginx.conf -> start nginx with given config
-netstat -pltn | grep nginx -> see on which ports nginx is listening 
+        which nginx -> get the path to binary
+        nginx -t -c /etc/nginx/nginx.conf -> test nginx config
+        nginx -c /etc/nginx/nginx.conf -> start nginx with given config
+        netstat -pltn | grep nginx -> see on which ports nginx is listening 
 
-try and start nginx 
-    sudo systemctl start nginx.service
+        try and start nginx 
+        sudo systemctl start nginx.service
 
-or check status: 
-    sudo systemctl status nginx
-    
-if get error: 
-    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+        or check status: 
+        sudo systemctl status nginx
 
-then see what's on that port:
-    sudo netstat -tulpn
-    nginx may already be running. 
+        if get error: 
+        nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
 
-had to end process 
-    sudo fuser -k 80/tcp
+        then see what's on that port:
+        sudo netstat -tulpn
+        nginx may already be running. 
 
-this finally worked 
-     sudo systemctl restart nginx
+        had to end process 
+        sudo fuser -k 80/tcp
 
-if you want to
+        this finally worked 
+        sudo systemctl restart nginx
+        
+(4) to see if you can connect to nginx server
     curl localhost 
+    or enter Public IPv4 address into browser
+
+(5) install git
+    sudo yum install git
+    sudo git clone https://github.com/cdialpha/personal-site-spa.git
+
+(6) Need to install nodejs to install dependencies. Follow tut on aws: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html
+    (a) curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+    (b) . ~/.nvm/nvm.sh
+    (c) nvm install --lts 
+        // this worked when I was in the ec2-
+    (d) two detour steps? 
+            nvm use --delete-prefix v18.0.0
+            had to https://stackoverflow.com/questions/72022527/glibc-2-27-not-found-while-installing-node-on-amazon-ec2-instance
+            Try installing the active LTS version instead of latest with 'nvm install 16' (instead of nvm install node) as per the examples. 
+    (e) node -e "console.log('Running Node.js ' + process.version)"
+   
+
+(7) run npm install
+    initially i got an access-denied error. 
+    followed this SO thread: https://stackoverflow.com/questions/48798760/npm-install-on-aws-ec2-instance-throw-eacces
+
+(8) build in directory with json.config
+    npm run build 
+    pwd to get html within build directory eg. /home/ec2-user/app-deploy/personal-site-spa/dist/index.html
+
+(9) cd into ~/etc/nginx/
+    nano nginx.config
+
+    change root to "/home/ec2-user/app-deploy/personal-site-spa/dist"
+    just below, add location / {
+        try_files $uri /index.html
+    } 
+    optional: make second file /etc/nginx/conf.d/react.conf  then cat /etc/nginx/nginx.conf 
+
+    run config test "sudo nginx -t" 
+    if successful then tell nginx to reload "sudo service nginx reload"
+
+(10)
+    several options for where you store your build files. 
+    in the home directory I have ec2-user. There I created an app-deploy folder. 
+    that's where I built in step (8) 
+    Was giving me trouble so I moved the build folder to var/www 
+    

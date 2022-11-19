@@ -118,11 +118,11 @@ const Bio = () => {
             I have spent nearly my entire life in St. Louis in what I would
             consider a quitessential 90's suburban childhood. From the few other
             places around the world that I've been, I've come to appreciate the
-            mid-west more than I used to. Previously, I had seen missouri as
-            boring. But after seeing how some places struggle to find water in a
-            dry dessert; have to ship goods deep into the mountains; lack timber
-            to stoke a fire; amend exhuasted soils that are unkind to crops'
-            roots... It makes you see the midwest in a different light. Kind,
+            mid-west more than I used to. Previously, I had seen Missouri as
+            ashamedly boring. But after seeing how some places struggle to find
+            water in a dry dessert; have to ship goods deep into the mountains;
+            lack timber to stoke a fire; amend exhuasted soils that are unkind
+            to crops... It makes you see the midwest in a different light. Kind,
             forgiving, quiet.
           </p>
           <br />

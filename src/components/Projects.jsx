@@ -109,9 +109,6 @@ const Projects = () => {
       <SubTitle>
         <div className="flex">
           <h3> Boston Spread </h3>
-          <a href="www.bostonspread.com">
-            <AiOutlineLink className="ml-5" />
-          </a>
           <a href="https://github.com/cdialpha/homespread_v2">
             <AiFillGithub className="ml-5 mb-5" />
           </a>
@@ -126,7 +123,8 @@ const Projects = () => {
         complicated start up and regulatory procedures. This single page
         application (SPA) features the MERN stack, S3 image upload, and
         showcasing foundational react libraries (Formik, React Query, and Redux
-        Toolkit). The site is hosted using nginx on Linode servers.{" "}
+        Toolkit). Originally hosted on Linode nginx servers, but has since been
+        removed.
         <p className="mt-5 mb-5">
           Some features include user credential authentication, role based
           access (User / Chef), CRUD recipie, Edit Bio, Shopping Cart, and more.
